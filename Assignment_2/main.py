@@ -50,7 +50,6 @@ def get_product_price(product_id: int):
     return {"error": "Product not found"}
 
 
-
 class CustomerFeedback(BaseModel):
     customer_name: str = Field(..., min_length=2, max_length=100)
     product_id: int = Field(..., gt=0)
