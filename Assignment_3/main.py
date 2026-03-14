@@ -358,7 +358,5 @@ def place_order(order_data: OrderRequest):
  
 
 @app.get('/orders')
-
 def get_all_orders():
-
     return {'orders': orders, 'total_orders': len(orders)}
