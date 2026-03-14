@@ -6,13 +6,8 @@ from pydantic import BaseModel, Field
 
 app = FastAPI()
 
- 
 
-# ══ PYDANTIC MODELS ═══════════════════════════════════════════════
-
- 
-
-class OrderRequest(BaseModel):                          # Day 2
+class OrderRequest(BaseModel):                      
 
     customer_name:    str = Field(..., min_length=2, max_length=100)
 
@@ -24,7 +19,7 @@ class OrderRequest(BaseModel):                          # Day 2
 
  
 
-class NewProduct(BaseModel):                            # Day 4
+class NewProduct(BaseModel):                         
 
     name:     str  = Field(..., min_length=2, max_length=100)
 
@@ -34,11 +29,6 @@ class NewProduct(BaseModel):                            # Day 4
 
     in_stock: bool = True
 
- 
-
-# ══ DATA ══════════════════════════════════════════════════════════
-
- 
 
 products = [
 
@@ -58,11 +48,7 @@ orders        = []
 
 order_counter = 1
 
- 
 
-# ══ HELPER FUNCTIONS ══════════════════════════════════════════════
-
- 
 
 def find_product(product_id: int):
 
@@ -112,25 +98,6 @@ def filter_products_logic(category=None, min_price=None,
 
     return result
 
- 
-
-# ══ ENDPOINTS ═════════════════════════════════════════════════════
-
-#
-
-# ROUTE ORDER RULE — FastAPI reads top to bottom, first match wins.
-
-# Fixed routes (/filter /compare /audit /discount) BEFORE variable (/{product_id})
-
-#
-
-# ══════════════════════════════════════════════════════════════════
-
- 
-
-# ── DAY 1 ─────────────────────────────────────────────────────────
-
- 
 
 @app.get('/')
 
@@ -146,11 +113,7 @@ def get_all_products():
 
     return {'products': products, 'total': len(products)}
 
- 
 
-# ── DAY 2 — Filter ────────────────────────────────────────────────
-
- 
 
 @app.get('/products/filter')
 
@@ -171,11 +134,6 @@ def filter_products(
     return {'filtered_products': result, 'count': len(result)}
 
  
-
-# ── DAY 3 — Compare ───────────────────────────────────────────────
-
- 
-
 @app.get('/products/compare')
 
 def compare_products(
@@ -214,15 +172,10 @@ def compare_products(
 
  
 
-# ── DAY 4 — Step 18: Add a new product (POST) ─────────────────────
-
- 
 
 @app.post('/products')
 
 def add_product(new_product: NewProduct, response: Response):
-
-    # Check for duplicate name (case-insensitive)
 
     existing_names = [p['name'].lower() for p in products]
 
@@ -234,7 +187,7 @@ def add_product(new_product: NewProduct, response: Response):
 
  
 
-    # Auto-generate next ID
+    
 
     next_id = max(p['id'] for p in products) + 1
 
@@ -261,8 +214,6 @@ def add_product(new_product: NewProduct, response: Response):
     return {'message': 'Product added', 'product': product}
 
  
-
-# ── DAY 4 — Step 19: Update stock or price (PUT) ──────────────────
 
 @app.get('/products/audit')
 def product_audit(): 
@@ -321,10 +272,6 @@ def update_product(
 
     return {'message': 'Product updated', 'product': product}
 
- 
-
-# ── DAY 4 — Step 20: Delete a product (DELETE) ────────────────────
-
 
 @app.delete('/products/{product_id}')
 
@@ -345,13 +292,6 @@ def delete_product(product_id: int, response: Response):
     return {'message': f"Product '{product['name']}' deleted"}
 
  
-
-# ── DAY 1 — Get single product ────────────────────────────────────
-
-# Variable route — always AFTER all fixed routes above
-
- 
-
 @app.get('/products/{product_id}')
 
 def get_product(product_id: int):
@@ -363,11 +303,6 @@ def get_product(product_id: int):
         return {'error': 'Product not found'}
 
     return {'product': product}
-
- 
-
-# ── DAY 2 — Place order ───────────────────────────────────────────
-
  
 
 @app.post('/orders')
@@ -427,4 +362,3 @@ def place_order(order_data: OrderRequest):
 def get_all_orders():
 
     return {'orders': orders, 'total_orders': len(orders)}
-
