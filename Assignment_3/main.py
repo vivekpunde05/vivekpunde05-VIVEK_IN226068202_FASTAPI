@@ -318,14 +318,9 @@ def place_order(order_data: OrderRequest):
     if not product:
 
         return {'error': 'Product not found'}
-
- 
-
     if not product['in_stock']:
 
         return {'error': f"{product['name']} is out of stock"}
-
- 
 
     total = calculate_total(product, order_data.quantity)
 
@@ -354,9 +349,6 @@ def place_order(order_data: OrderRequest):
     order_counter += 1
 
     return {'message': 'Order placed successfully', 'order': order}
-
- 
-
 @app.get('/orders')
 def get_all_orders():
     return {'orders': orders, 'total_orders': len(orders)}
