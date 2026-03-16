@@ -55,17 +55,11 @@ def filter_products_logic(category=None, min_price=None,max_price=None, in_stock
 @app.get('/')
 
 def home():
-
     return {'message': 'Welcome to our E-commerce API'}
-
- 
-
 @app.get('/products')
 
 def get_all_products():
-
     return {'products': products, 'total': len(products)}
-
 
 
 @app.get('/products/filter')
