@@ -15,21 +15,12 @@ class OrderRequest(BaseModel):
     delivery_address: str = Field(..., min_length=10)
 
  class NewProduct(BaseModel):                         
-
     name:     str  = Field(..., min_length=2, max_length=100)
-
     price:    int  = Field(..., gt=0)
-
     category: str  = Field(..., min_length=2)
-
     in_stock: bool = True
-
-
 products = [
-
-    {'id': 1, 'name': 'Wireless Mouse', 'price': 499, 'category': 'Electronics', 'in_stock': True},
-
-    {'id': 2, 'name': 'Notebook',       'price':  99, 'category': 'Stationery',  'in_stock': True},
+    {'id': 1, 'name': 'Wireless Mouse', 'price': 499, 'category': 'Electronics', 'in_stock': True},    {'id': 2, 'name': 'Notebook',       'price':  99, 'category': 'Stationery',  'in_stock': True},
 
     {'id': 3, 'name': 'USB Hub',        'price': 799, 'category': 'Electronics', 'in_stock': False},
 
