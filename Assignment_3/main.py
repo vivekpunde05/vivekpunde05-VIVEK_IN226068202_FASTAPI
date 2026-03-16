@@ -2,8 +2,6 @@ from fastapi import FastAPI, Query, Response, status
 
 from pydantic import BaseModel, Field
 
- 
-
 app = FastAPI()
 
 
@@ -309,9 +307,7 @@ def get_product(product_id: int):
 
 def place_order(order_data: OrderRequest):
 
-    global order_counter
-
- 
+    global order_counter 
 
     product = find_product(order_data.product_id)
 
