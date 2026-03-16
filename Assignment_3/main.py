@@ -34,40 +34,23 @@ def find_product(product_id: int):
         if p['id'] == product_id:
             return p
     return None
+
 def calculate_total(product: dict, quantity: int) -> int:
-
     """Multiply price by quantity and return total."""
-
     return product['price'] * quantity
 
- 
-
-def filter_products_logic(category=None, min_price=None,
-
-                          max_price=None, in_stock=None):
-
+def filter_products_logic(category=None, min_price=None,max_price=None, in_stock=None):
     """Apply filters and return matching products."""
-
     result = products
-
     if category  is not None:
-
         result = [p for p in result if p['category'] == category]
-
     if min_price is not None:
-
         result = [p for p in result if p['price'] >= min_price]
-
     if max_price is not None:
-
         result = [p for p in result if p['price'] <= max_price]
-
     if in_stock  is not None:
-
         result = [p for p in result if p['in_stock'] == in_stock]
-
     return result
-
 
 @app.get('/')
 
