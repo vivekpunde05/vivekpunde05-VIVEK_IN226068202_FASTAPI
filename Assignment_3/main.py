@@ -28,23 +28,12 @@ products = [
 ]
 orders        = []
 order_counter = 1
-
-
-
 def find_product(product_id: int):
-
     """Search products list by ID. Returns product dict or None."""
-
     for p in products:
-
         if p['id'] == product_id:
-
             return p
-
     return None
-
- 
-
 def calculate_total(product: dict, quantity: int) -> int:
 
     """Multiply price by quantity and return total."""
