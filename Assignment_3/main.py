@@ -4,7 +4,6 @@ from pydantic import BaseModel, Field
 
 app = FastAPI()
 
-
 class OrderRequest(BaseModel):                      
 
     customer_name:    str = Field(..., min_length=2, max_length=100)
@@ -15,9 +14,7 @@ class OrderRequest(BaseModel):
 
     delivery_address: str = Field(..., min_length=10)
 
- 
-
-class NewProduct(BaseModel):                         
+ class NewProduct(BaseModel):                         
 
     name:     str  = Field(..., min_length=2, max_length=100)
 
