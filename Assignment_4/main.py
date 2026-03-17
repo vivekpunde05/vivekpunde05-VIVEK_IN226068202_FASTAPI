@@ -168,11 +168,9 @@ def place_order(order_data: OrderRequest):
     orders.append(order)
     order_counter += 1
     return {'message': 'Order placed successfully', 'order': order}
-
 @app.get('/orders')
 def get_all_orders():
     return {'orders': orders, 'total_orders': len(orders)}
-
 # ── DAY 5 — Cart system ───────────────────────────────────────────
 # NOTE: /cart/add and /cart/checkout are FIXED routes
 #       /cart/{product_id} is a VARIABLE route
@@ -222,7 +220,6 @@ def view_cart():
         'item_count':  len(cart),
         'grand_total': grand_total,
     }
-
 # FIXED route /cart/checkout — must be BEFORE /cart/{product_id}
 @app.post('/cart/checkout')
 def checkout(checkout_data: CheckoutRequest, response: Response):
@@ -255,7 +252,6 @@ def checkout(checkout_data: CheckoutRequest, response: Response):
         'orders_placed': placed_orders,
         'grand_total':   grand_total,
     }
-
 # VARIABLE route — always after /cart/checkout
 @app.delete('/cart/{product_id}')
 def remove_from_cart(product_id: int, response: Response):
