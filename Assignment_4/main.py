@@ -98,7 +98,6 @@ def compare_products(
         'better_value': cheaper['name'],
         'price_diff':   abs(p1['price'] - p2['price']),
     }
-
 # ── DAY 4 — CRUD: Add, Update, Delete ─────────────────────────────
 @app.post('/products')
 def add_product(new_product: NewProduct, response: Response):
@@ -130,7 +129,6 @@ def update_product(
     if price is not None:
         product['price'] = price
     return {'message': 'Product updated', 'product': product}
-
 @app.delete('/products/{product_id}')
 def delete_product(product_id: int, response: Response):
     product = find_product(product_id)
