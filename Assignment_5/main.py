@@ -166,7 +166,6 @@ def search_products(keyword: str = Query(...)):
 # =============================
 # Q2 — PRODUCT SORTING
 # =============================
-
 @app.get("/products/sort")
 def sort_products(
         sort_by: str = Query("price"),
