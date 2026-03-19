@@ -307,7 +307,6 @@ def get_orders_page(
 ):
 
     start = (page - 1) * limit
-
     return {
         "page": page,
         "limit": limit,
