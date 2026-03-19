@@ -163,8 +163,6 @@ def search_products(keyword: str = Query(...)):
         "total_found": len(result),
         "products": result
     }
-
-
 # =============================
 # Q2 — PRODUCT SORTING
 # =============================
