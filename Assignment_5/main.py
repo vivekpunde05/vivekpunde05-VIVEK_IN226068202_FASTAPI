@@ -204,7 +204,6 @@ def paginate_products(
         page: int = Query(1, ge=1),
         limit: int = Query(2, ge=1)
 ):
-
     product_list = [{"id": pid, **p} for pid, p in products.items()]
 
     start = (page - 1) * limit
@@ -217,12 +216,9 @@ def paginate_products(
         "total_pages": -(-len(product_list) // limit),
         "products": paged
     }
-
-
 # =============================
 # Q4 — SEARCH ORDERS
 # =============================
-
 @app.get("/orders/search")
 def search_orders(customer_name: str = Query(...)):
 
@@ -239,12 +235,9 @@ def search_orders(customer_name: str = Query(...)):
         "total_found": len(result),
         "orders": result
     }
-
-
 # =============================
 # Q5 — SORT BY CATEGORY
 # =============================
-
 @app.get("/products/sort-by-category")
 def sort_by_category():
 
@@ -259,8 +252,6 @@ def sort_by_category():
         "products": result,
         "total": len(result)
     }
-
-
 # =============================
 # Q6 — BROWSE (SEARCH + SORT + PAGINATION)
 # =============================
@@ -275,9 +266,7 @@ def browse_products(
 ):
 
     product_list = [{"id": pid, **p} for pid, p in products.items()]
-
     result = product_list
-
     # Search
     if keyword:
         result = [
@@ -308,12 +297,9 @@ def browse_products(
         "total_pages": -(-total // limit),
         "products": paged
     }
-
-
 # =============================
 # BONUS — ORDER PAGINATION
 # =============================
-
 @app.get("/orders/page")
 def get_orders_page(
         page: int = Query(1, ge=1),
