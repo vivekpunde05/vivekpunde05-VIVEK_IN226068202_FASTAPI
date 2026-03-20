@@ -131,21 +131,15 @@ def checkout(data: CheckoutRequest):
         "orders_placed": placed_orders,
         "grand_total": grand_total
     }
-
-
-# =============================
 # ORDERS
-# =============================
 
 @app.get("/orders")
 def get_orders():
     return {"orders": orders, "total_orders": len(orders)}
 
-
 # =============================
 # Q1 — PRODUCT SEARCH
 # =============================
-
 @app.get("/products/search")
 def search_products(keyword: str = Query(...)):
 
