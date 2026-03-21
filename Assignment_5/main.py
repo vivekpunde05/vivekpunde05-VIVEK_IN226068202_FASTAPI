@@ -132,7 +132,6 @@ def checkout(data: CheckoutRequest):
         "grand_total": grand_total
     }
 # ORDERS
-
 @app.get("/orders")
 def get_orders():
     return {"orders": orders, "total_orders": len(orders)}
