@@ -126,7 +126,6 @@ def checkout(data: CheckoutRequest):
         order_id_counter += 1
 
     cart.clear()
-
     return {
         "orders_placed": placed_orders,
         "grand_total": grand_total
