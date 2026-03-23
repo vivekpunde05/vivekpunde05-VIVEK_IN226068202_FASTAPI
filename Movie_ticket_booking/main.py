@@ -477,11 +477,8 @@ def create_booking(request: BookingRequest):
     return {"message": "Booking confirmed!", "booking": booking}
 
 
-# ─────────────────────────────────────────────
-#  SEAT-HOLD WORKFLOW  (Day 5)
-# ─────────────────────────────────────────────
+#  SEAT-HOLD WORKFLOW 
 
-# ═════════════════════════════════════════════
 #  Q14  —  POST /seat-hold  |  GET /seat-hold
 # ═════════════════════════════════════════════
 
