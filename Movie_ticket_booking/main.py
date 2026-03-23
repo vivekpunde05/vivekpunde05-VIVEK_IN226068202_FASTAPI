@@ -43,7 +43,6 @@ class BookingRequest(BaseModel):
     seat_type: str = Field(default="standard")
     promo_code: str = Field(default="")
 
-
 class NewMovie(BaseModel):
     title: str = Field(..., min_length=2)
     genre: str = Field(..., min_length=2)
@@ -52,16 +51,13 @@ class NewMovie(BaseModel):
     ticket_price: int = Field(..., gt=0)
     seats_available: int = Field(..., gt=0)
 
-
 class SeatHoldRequest(BaseModel):
     customer_name: str = Field(..., min_length=2)
     movie_id: int = Field(..., gt=0)
     seats: int = Field(..., gt=0, le=10)
 
-
 # ─────────────────────────────────────────────
-#  HELPER FUNCTIONS  (Day 3 — plain functions)
-# ─────────────────────────────────────────────
+#  HELPER FUNCTIONS  
 
 def find_movie(movie_id: int):
     """Return the movie dict or None."""
@@ -115,19 +111,15 @@ def filter_movies_logic(
     return result
 
 
-# ═════════════════════════════════════════════
+
 #  Q1  —  Home Route
-# ═════════════════════════════════════════════
 
 @app.get("/")
 def home():
     return {"message": "Welcome to CineStar Booking"}
 
-
-# ═════════════════════════════════════════════
-#  Q5  —  Summary  (FIXED route — must be above /{movie_id})
-# ═════════════════════════════════════════════
-
+#  Q5  —  Summary
+#
 @app.get("/movies/summary")
 def movies_summary():
     if not movies:
@@ -375,9 +367,7 @@ def delete_movie(movie_id: int):
     return {"message": f"Movie '{movie['title']}' deleted successfully"}
 
 
-# ─────────────────────────────────────────────
 #  BOOKINGS
-# ─────────────────────────────────────────────
 
 # ═════════════════════════════════════════════
 #  Q19  —  Bookings Search / Sort / Page  (FIXED routes first)
