@@ -517,8 +517,6 @@ def create_seat_hold(request: SeatHoldRequest):
 
     return {"message": "Seats held successfully!", "hold": hold}
 
-
-# ═════════════════════════════════════════════
 #  Q15  —  POST /seat-confirm/{hold_id}  |  DELETE /seat-release/{hold_id}
 # ═════════════════════════════════════════════
 
