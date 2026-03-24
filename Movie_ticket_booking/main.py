@@ -550,12 +550,10 @@ def confirm_seat_hold(hold_id: int):
 
     # Remove from holds
     holds.remove(hold)
-
     return {
         "message": "Hold confirmed! Booking created.",
         "booking": booking,
     }
-
 
 @app.delete("/seat-release/{hold_id}")
 def release_seat_hold(hold_id: int):
