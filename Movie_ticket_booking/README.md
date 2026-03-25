@@ -5,8 +5,7 @@
 
 A FastAPI backend for a Movie Ticket Booking System — Final Project for FastAPI Internship Training (Days 1–6).
 
----
-
+--
 ## � Quick Start
 
 ```bash

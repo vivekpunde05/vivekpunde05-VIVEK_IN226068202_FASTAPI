@@ -135,7 +135,6 @@ def checkout(data: CheckoutRequest):
 def get_orders():
     return {"orders": orders, "total_orders": len(orders)}
 
-# =============================
 # Q1 — PRODUCT SEARCH
 # =============================
 @app.get("/products/search")
