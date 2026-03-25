@@ -517,6 +517,7 @@ def create_seat_hold(request: SeatHoldRequest):
 
     return {"message": "Seats held successfully!", "hold": hold}
 
+
 #  Q15  —  POST /seat-confirm/{hold_id}  |  DELETE /seat-release/{hold_id}
 @app.post("/seat-confirm/{hold_id}", status_code=201)
 def confirm_seat_hold(hold_id: int):
