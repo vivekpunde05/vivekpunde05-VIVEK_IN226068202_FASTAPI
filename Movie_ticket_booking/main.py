@@ -458,7 +458,6 @@ def create_booking(request: BookingRequest):
 
     # Reduce available seats
     movie["seats_available"] -= request.seats
-
     booking = {
         "booking_id": booking_counter,
         "customer_name": request.customer_name,
@@ -480,7 +479,6 @@ def create_booking(request: BookingRequest):
 #  SEAT-HOLD WORKFLOW 
 
 #  Q14  —  POST /seat-hold  |  GET /seat-hold
-# ═════════════════════════════════════════════
 
 @app.get("/seat-hold")
 def get_all_holds():
